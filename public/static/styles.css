@@ -1,3 +1,59 @@
-body {
-    color: red;
+* {
+    box-sizing: border-box;
+}
+
+textarea {
+    field-sizing: content;
+
+    min-width: 100px;
+    max-width: 100%;
+}
+
+dialog {
+    border: none;
+    border-radius: 12px;
+    padding: 1.5rem;
+    width: min(90vw, 600px);
+    max-height: 85vh;
+    overflow: auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px); /* optional */
+}
+
+/* stop the page behind from scrolling while the dialog is open */
+body:has(dialog[open]) {
+    overflow: hidden;
+}
+
+dialog[open] {
+    animation: fade-in 0.2s ease-out;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*.htmx-indicator {
+    display: none;
+}
+.htmx-request .htmx-indicator,
+.htmx-request.htmx-indicator {
+    display: block;
+}*/
+
+.form .button-container {
+    display: flex;
+    gap: 15px;
+    padding-top: 10px;
 }
